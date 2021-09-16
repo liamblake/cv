@@ -1,3 +1,10 @@
+# Hide personal details
+src/personal.tex
+
+# Hide the compiled pdf
+# TODO: Get this online, without the details
+*.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

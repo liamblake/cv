@@ -1,0 +1,207 @@
+\PassOptionsToPackage{lowtilde}{url}
+
+
+\documentclass[11pt,a4paper,academicons]{altacv}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{fontspec}
+\usepackage{academicons}
+\usepackage{filecontents}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+
+\usepackage{style_resume}
+
+
+\geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm,headsep = 10mm}
+
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+
+
+% Header and section
+\newcommand{\cvsection}[2][]{%
+\vspace{5mm}%
+\ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+{\color{heading}\LARGE\bfseries{#2}}\\[-1.5ex]%
+{\color{heading}\rule{\linewidth}{1.1pt}\par}\smallskip
+}
+
+\newcommand{\cvsubsection}[1]{%
+	\bigskip%
+	{\color{emphasis}\large\bfseries{#1}\par}
+}
+
+
+
+% Event
+\newcommand{\cvevent}[3]{%
+	{\large\color{emphasis}\textbf{#1}\par}
+	\smallskip
+	\large\textbf{\color{accent}#2}\par
+	\smallskip
+	\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#3}%
+	\smallskip\normalsize
+}
+
+% Achievement
+\newcommand{\cvachievement}[3]{%
+	\begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
+		\multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{\small #2} \\
+		                                        & #3
+	\end{tabularx}%
+	\smallskip
+}
+
+% Skill box - inspired by PP resume example
+\newcommand{\skill}[1]{\large\textcolor{emphasis}{#1}}
+
+%\colorbox{accent}{\large\textcolor{white}{\textbf{\strut #1}}}\hspace{0.5em}\vspace{0.1em}}
+
+
+% Side divider
+\newcommand{\divider}{\vspace{2mm}\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\vspace{2.5mm}}
+
+
+% Remove default header and footer lines
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+\usepackage[12pt]{moresize}
+\usepackage[fulladjust]{marginnote}
+
+\begin{document}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\cfoot{\centering\thepage}
+
+% Header section
+\begin{fullwidth}
+
+	% Name header
+	\include{personal}
+
+	% Break between name and objective
+	\divider
+
+	% Main content
+	\normalsize
+	Highly self-motivated applied mathematics student driven by a desire to make a positive difference to the lives of others whilst also developing a rounded toolkit of analytical skills. Seeking to apply a strong background in mathematical modelling and problem solving through an internship before pursuing further study.
+
+\end{fullwidth}
+
+\cvsection[sb_p1]{Education}
+\cvevent{Bachelor of Mathematical Sciences (Advanced)}{The University of Adelaide}{February 2018 -- July 2021}
+\begin{itemize}
+	\item \textbf{Major:} Applied Mathematics \& Statistics
+	\item \textbf{GPA:} 7.0/7.0 \qquad \textbf{WAM:} 94.96
+\end{itemize}
+
+
+
+\cvsection{Industry Experience}
+\cvevent{Data Science \& Software Intern}{Adelaide MRI}{March 2021 -- Present}
+\begin{itemize}
+	\item Backend Python, work with frontend engineers, database in SQL
+
+	\item Work directly with medical and machine data
+
+	\item Develop, tune and implement machine learning models, balancing model performance and computational efficiency
+
+	\item Work with doctors and users to develop solutions
+\end{itemize}
+
+
+\divider
+
+\cvevent{Vacation Research Scholar}{Australian Mathematical Sciences Institute / The University of Adelaide}{December 2020 -- February 2021}
+\begin{itemize}
+	\item \textbf{Project Title:} Improving Clustering Techniques for Identifying Lagrangian Coherent Structures
+	\item Collaborated with my academic supervisor to create and achieve my own independent research goals.
+
+	\item Obtained and manipulated satellite ocean data and applied findings to simulated and real data in \textsc{Matlab}.
+
+
+	\item Synthesised multiple academic sources to combine theory and real data to produce and interpret results.
+
+
+	\item Presented results to peers and academics nationwide at \textit{AMSIConnect} conference.
+
+\end{itemize}
+
+
+% Add page 2 sidebar
+\addnextpagesidebar[42pt]{sb_p2}
+
+
+\newpage
+
+% Header
+%
+%\thispagestyle{}
+%\fancyhf{}
+%\fancyhead[C]{
+%\vspace{2.5mm}
+\begin{fullwidth}
+	\color{emphasis}%
+	{\fontsize{24pt}{24pt}\selectfont\bfseries{Liam Blake}}
+
+	% Break between name and objective
+	\divider
+\end{fullwidth}%}
+
+\cvevent{Undergraduate Engineer}{Saab Australia}{December 2019 -- February 2020}
+\begin{itemize}
+	\item Designed and developed a graphical concept demonstrator in Python to communicate application of a statistical estimator to a broader audience of Saab employees.
+	\item Collaborated with Modelling \& Analysis team and became actively involved in daily stand-ups and weekly team meetings, implementing the Agile framework.
+	\item Created an inclusive and productive environment with other interns, taking advantage of our diverse backgrounds to support each other.
+	\item Delivered a successful and technical presentation to a diverse audience, explaining how project fitted into broader team goals.
+\end{itemize}
+
+
+\vspace{-3.55mm}
+\cvsection[]{Other Experience}
+\cvevent{Vice President}{Adelaide University Mathematics Society}{2020 -- Present}
+\begin{itemize}
+	\item Lead and collaborate with a committee of 16 students working to organise club events of social, academic and industry focus.
+	\item Encourage, lead and take part in committee meetings where ideas are discussed and all opinions considered.
+	\item Volunteer enthusiastically to play key roles in the organisation and execution of events, applying practical problem-solving and people management skills.
+	\item Adapted to the unprecedented COVID-19 situation, leading discussions and implementations of remote events best suited to the society's members.
+\end{itemize}
+
+
+\divider
+
+
+\cvevent{Mathematics Tutor}{Privately Empoyed}{2018 -- Present}
+\begin{itemize}
+	\item Encourage an enthusiasm for mathematics in students, while also developing their own ability and strive for academic success.
+	\item Develop trust by both respecting the student's ability and acknowledging their mistakes without judgement.
+	\item Balance own schedule to be as flexible as possible in arranging sessions best suited to the student and their family.
+\end{itemize}
+
+
+
+
+\divider
+
+
+
+%\cvevent{Assistant Instructor}{Next Generation Taekwondo -- Volunteering}{2015 -- 2019}
+%\begin{itemize}
+%\item Instructed a range of age groups, from toddlers to adults. 
+%\item Reliability and dedication led to being trusted to run large portions of the classes, and to be entirely responsible when necessary.
+%\item Regularly sought and incorporated feedback on both teaching and learning, continuously pushing to improve in both areas.
+%\item Collaborated with instructor and other assistants to provide creative and engaging activities for students to develop their skills and passion.
+%\end{itemize}
+
+\end{document}l
