@@ -1,0 +1,58 @@
+name: Build resume
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Compile resume
+      uses: xu-cheng/latex-action@v2
+      with:
+        working_directory: src
+        root_file: resume.tex
+        latexmk_use_lualatex: true
+
+    # The following commits the built PDF to my website repo
+    - name: Setup SSH key
+      run: |
+        mkdir -p $HOME/.ssh
+        ssh-keyscan github.com >> $HOME/.ssh/known_hosts
+        eval 'echo "$SSH_KEY" > $HOME/.ssh/id_rsa'
+        eval 'echo "$PUB_KEY" > $HOME/.ssh/id_rsa.pub'
+        
+        sudo chmod 600 $HOME/.ssh/id_rsa
+        sudo chmod 600 $HOME/.ssh/id_rsa.pub
+        
+        eval $(ssh-agent -s)
+        ssh-add $HOME/.ssh/id_rsa
+      shell: bash
+      env:
+        SSH_KEY: ${{secrets.WEBSITE_SSH}}
+        PUB_KEY: ${{secrets.WEBSITE_SSH_PUB}}
+        
+    - name: Checkout website repo
+      run: |
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git clone git@github.com:LiamBlake/LiamBlake.github.io.git
+  
+    - name: Commit built resume
+      run: |
+        mv src/resume.pdf LiamBlake.github.io/content/resume.pdf
+        cd LiamBlake.github.io
+        git add content/resume.pdf
+        git commit -m "Resume `date +\"%d/%m/%Y\"`"
+        git push
+  

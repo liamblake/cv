@@ -1,19 +1,17 @@
-.PHONY: resume.pdf cv.pdf all clean
+RESUME := $(PWD)/src/resume.tex
+ARGS := -pdf -lualatex -use-make
 
-all: resume.pdf cv.pdf
+STYLE_FILES := $(wildcard $(PWD)/src/*.sty)
+CLASS_FILES := $(wildcard $(PWD)/src/*.cls)
 
-# MAIN LATEXMK RULE
+RESUME_BUILD := $(PWD)/build/LBlake_resume.pdf
 
-# -pdf tells latexmk to generate PDF directly (instead of DVI).
-# -pdflatex="" tells latexmk to call a specific backend with specific options.
-# -use-make tells latexmk to call make for generating missing files.
+.PHONY: $(RESUME).pdf all clean
 
-# -interaction=nonstopmode keeps the pdflatex backend from stopping at a
-# missing file reference and interactively asking you for an alternative.
+all: $(RESUME_BUILD)
 
-resume.pdf: resume.tex \
-latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make resume.tex
+$(RESUME_BUILD): $(RESUME)
+	latexmk $(ARGS) $(RESUME) $(CLASSES)
 
-cv.pdf: cv.tex latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -use-make cv.tex
-
-clean: latexmk -CA
+clean:
+	latexmk -C
