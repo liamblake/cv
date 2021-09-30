@@ -9,12 +9,28 @@
 \usepackage{multicol}
 \usepackage{fancyhdr}
 \usepackage{ragged2e}
+\usepackage{xparse}
 
 \usepackage{style_resume}
 
-
 \geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm,headsep = 10mm}
 
+% Neat trick to access environment variables
+% From https://tex.stackexchange.com/a/62032
+\ExplSyntaxOn
+\NewDocumentCommand{\getenv}{om}
+{
+	\sys_get_shell:nnN { kpsewhich ~ --var-value ~ #2 } { } \l_tmpa_tl
+	\tl_trim_spaces:N \l_tmpa_tl
+	\IfNoValueTF { #1 }
+	{
+		\tl_use:N \l_tmpa_tl
+	}
+	{
+		\tl_set_eq:NN #1 \l_tmpa_tl
+	}
+}
+\ExplSyntaxOff
 
 % Change the bullets for itemize and rating marker
 % for \cvskill if you want to
@@ -88,14 +104,21 @@
 \begin{fullwidth}
 
 	% Name header
-	\include{personal}
+	\begin{center}
+		\color{emphasis}%
+		{\fontsize{48pt}{48pt}\selectfont\bfseries{Liam Blake}}\\[0.25ex]
 
+		\small \email{\getenv{EMAIL}} \
+		\phone{\getenv{PHONE}} \\[0.1ex]
+		\linkedin{linkedin.com/in/liam-blake} \
+		\github{github.com/LiamBlake}
+	\end{center}
 	% Break between name and objective
 	\divider
 
 	% Main content
 	\normalsize
-	Highly self-motivated applied mathematics student driven by a desire to make a positive difference to the lives of others whilst also developing a rounded toolkit of analytical skills. Seeking to apply a strong background in mathematical modelling and problem solving through an internship before pursuing further study.
+	Highly self-motivated applied mathematics student driven by a desire to make a positive difference to the lives of others whilst also developing a rounded toolkit of analytical skills. Seeking to combine a strong background in mathematical modelling and problem solving with industry experience to push new frontiers in mathematical research.
 
 \end{fullwidth}
 
@@ -103,7 +126,8 @@
 \cvevent{Bachelor of Mathematical Sciences (Advanced)}{The University of Adelaide}{February 2018 -- July 2021}
 \begin{itemize}
 	\item \textbf{Major:} Applied Mathematics \& Statistics
-	\item \textbf{GPA:} 7.0/7.0 \qquad \textbf{WAM:} 94.96
+
+	\item \textbf{GPA:} 7.0/7.0 \qquad \textbf{WAM:} 95.08
 \end{itemize}
 
 
@@ -111,13 +135,13 @@
 \cvsection{Industry Experience}
 \cvevent{Data Science \& Software Intern}{Adelaide MRI}{March 2021 -- Present}
 \begin{itemize}
-	\item
+	\item Develop web applications for medical report writing, collaborating with doctors and other team members to produce efficient solutions and features.
 
-	\item Design and implement solutions within the backend to a range of problems, including: designing RESTful APIs, queries and database models in SQLAlchemy, and ???
+	\item Design and implement solutions within the Python backend to a range of problems, including: designing RESTful APIs with Flask, queries and database models in SQLAlchemy, and developing, tuning and implementing machine learning models in scikit-learn.
 
-	\item Develop, tune and implement machine learning models to improve report writing efficiency, balancing model performance and computational efficiency
+	\item Adapted to a rapidly changing role as team requirements changed.
 
-	\item Adapt to a rapidly changing role as
+	\item Perform large-scale refactors of the codebase, improving maintainability and test coverage by NUM\%.
 \end{itemize}
 
 
@@ -126,16 +150,14 @@
 \cvevent{Vacation Research Scholar}{Australian Mathematical Sciences Institute / The University of Adelaide}{December 2020 -- February 2021}
 \begin{itemize}
 	\item \textbf{Project Title:} Improving Clustering Techniques for Identifying Lagrangian Coherent Structures
+
 	\item Collaborated with my academic supervisor to create and achieve my own independent research goals.
 
 	\item Obtained and manipulated satellite ocean data and applied findings to simulated and real data in \textsc{Matlab}.
 
-
 	\item Synthesised multiple academic sources to combine theory and real data to produce and interpret results.
 
-
 	\item Presented results to peers and academics nationwide at \textit{AMSIConnect} conference.
-
 \end{itemize}
 
 
@@ -162,8 +184,10 @@
 \cvevent{Undergraduate Engineer}{Saab Australia}{December 2019 -- February 2020}
 \begin{itemize}
 	\item Designed and developed a graphical concept demonstrator in Python to communicate application of a statistical estimator to a broader audience of Saab employees.
+
 	\item Collaborated with Modelling \& Analysis team and became actively involved in daily stand-ups and weekly team meetings, implementing the Agile framework.
 	\item Created an inclusive and productive environment with other interns, taking advantage of our diverse backgrounds to support each other.
+
 	\item Delivered a successful and technical presentation to a diverse audience, explaining how project fitted into broader team goals.
 \end{itemize}
 
@@ -173,8 +197,11 @@
 \cvevent{Vice President}{Adelaide University Mathematics Society}{2020 -- Present}
 \begin{itemize}
 	\item Lead and collaborate with a committee of 16 students working to organise club events of social, academic and industry focus.
+
 	\item Encourage, lead and take part in committee meetings where ideas are discussed and all opinions considered.
+
 	\item Volunteer enthusiastically to play key roles in the organisation and execution of events, applying practical problem-solving and people management skills.
+
 	\item Adapted to the unprecedented COVID-19 situation, leading discussions and implementations of remote events best suited to the society's members.
 \end{itemize}
 
@@ -185,7 +212,9 @@
 \cvevent{Mathematics Tutor}{Privately Empoyed}{2018 -- Present}
 \begin{itemize}
 	\item Encourage an enthusiasm for mathematics in students, while also developing their own ability and strive for academic success.
+
 	\item Develop trust by both respecting the student's ability and acknowledging their mistakes without judgement.
+
 	\item Balance own schedule to be as flexible as possible in arranging sessions best suited to the student and their family.
 \end{itemize}
 

@@ -1,8 +1,6 @@
-# Hide personal details
-src/personal.tex
+.envrc
 
 # Hide the compiled pdf
-# TODO: Get this online, without the details
 *.pdf
 
 ## Core latex/pdflatex auxiliary files:
