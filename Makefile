@@ -11,7 +11,7 @@ RESUME_BUILD := $(PWD)/build/LBlake_resume.pdf
 all: $(RESUME_BUILD)
 
 $(RESUME_BUILD): $(RESUME)
-	latexmk $(ARGS) $(RESUME) $(CLASSES)
+	latexmk $(ARGS) $(RESUME) $(CLASS_FILES) $(STYLE_FILES)
 
 clean:
 	latexmk -C
