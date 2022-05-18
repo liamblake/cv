@@ -32,65 +32,6 @@
 }
 \ExplSyntaxOff
 
-% Change the bullets for itemize and rating marker
-% for \cvskill if you want to
-\renewcommand{\itemmarker}{{\small\textbullet}}
-\renewcommand{\ratingmarker}{\faCircle}
-
-\hyphenpenalty=10000
-\exhyphenpenalty=10000
-
-
-
-% Header and section
-\newcommand{\cvsection}[2][]{%
-\vspace{5mm}%
-\ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-{\color{heading}\LARGE\bfseries{#2}}\\[-1.5ex]%
-{\color{heading}\rule{\linewidth}{1.1pt}\par}\smallskip
-}
-
-\newcommand{\cvsubsection}[1]{%
-	\bigskip%
-	{\color{emphasis}\large\bfseries{#1}\par}
-}
-
-
-
-% Event
-\newcommand{\cvevent}[3]{%
-	{\large\color{emphasis}\textbf{#1}\par}
-	\smallskip
-	\large\textbf{\color{accent}#2}\par
-	\smallskip
-	\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#3}%
-	\smallskip\normalsize
-}
-
-% Achievement
-\newcommand{\cvachievement}[3]{%
-	\begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
-		\multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{\small #2} \\
-		                                        & #3
-	\end{tabularx}%
-	\smallskip
-}
-
-% Skill box - inspired by PP resume example
-\newcommand{\skill}[1]{\large\textcolor{emphasis}{#1}}
-
-%\colorbox{accent}{\large\textcolor{white}{\textbf{\strut #1}}}\hspace{0.5em}\vspace{0.1em}}
-
-
-% Side divider
-\newcommand{\divider}{\vspace{2mm}\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\vspace{2.5mm}}
-
-
-% Remove default header and footer lines
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-
 \usepackage[12pt]{moresize}
 \usepackage[fulladjust]{marginnote}
 
@@ -118,34 +59,113 @@
 
 	% Main content
 	\normalsize
-	Highly self-motivated applied mathematics student driven by a desire to make a positive difference to the lives of others whilst also developing a rounded toolkit of analytical skills. Seeking to combine a strong background in mathematical modelling and problem solving with industry experience to push new frontiers in mathematical research.
+	Highly self-motivated applied mathematician driven by a desire to make a meaningful difference to the lives of others whilst also developing a rounded toolkit of analytical skills. Seeking to combine a strong background in mathematical modelling and problem solving with industry experience to push new frontiers in mathematical research. 
 
-\end{fullwidth}
 
-\cvsection[sb_p1]{Education}
+\cvsection{Education}
+\cvevent{Master of Philosophy (Applied Mathematics)}{The University of Adelaide}{January 2022 -- January 2024}
+\begin{itemize}
+	\item \textbf{Project Title:} Employing stochastic sensitivity to quantify trajectory uncertainty in Lagrangian data assimilation.
+ 
+	% \item Develop new theory with a mind towards applications in climate science. 
+ 
+	% \item Demonstrate and validate results on toy and real-world data, in Julia and \textsc{Matlab}.
+
+\end{itemize}
+
+\divider
+
 \cvevent{Bachelor of Mathematical Sciences (Advanced)}{The University of Adelaide}{February 2018 -- July 2021}
 \begin{itemize}
 	\item \textbf{Major:} Applied Mathematics \& Statistics
 
 	\item \textbf{GPA:} 7.0/7.0 \qquad \textbf{WAM:} 95.08
+ 
+	\item \textbf{Awards:}
+ \begin{itemize}
+	 \item The Sir Ronald Fisher Memorial Scholarship for highest achievement in third year statistics courses.
+  \item The David Murray Prize in Mathematics for high achievement across third year mathematics courses.
+	%  \item The Bill Henderson Prize for highest achievement in first year applied mathematics courses.
+ \end{itemize}
+
 \end{itemize}
 
-\cvevent{Master of Philosophy (Applied Mathematics)}{The University of Adelaide}{January 2022 -- January 2024}
-\begin{itemize}
-	\item \textbf{Project Title:} Employing stochastic sensitivity to quantify trajectory uncertainty in Lagrangian data assimilation
-\end{itemize}
+\cvsection{Technical Skills}
+	| \skill{Python} 
+	\skill{Julia}
+	\skill{C/C++}
+	\skill{\textsc{Matlab}}
+	\skill{R, RMarkdown}
+	\skill{\LaTeX}
+	\skill{Git \& version control}
+ 	\skill{Command line \& shell}
 
 
 \cvsection{Industry Experience}
-\cvevent{Data Science \& Software Intern}{Adelaide MRI}{March 2021 -- Present}
+\cvevent{Data Science \& Software Intern}{Adelaide MRI}{March 2021 -- December 2021}
 \begin{itemize}
 	\item Develop web applications for medical report writing, collaborating with doctors and other team members to produce efficient solutions and features.
 
-	\item Design and implement solutions within the Python backend to a range of problems, including: designing RESTful APIs with Flask, queries and database models in SQLAlchemy, and developing, tuning and implementing machine learning models in scikit-learn.
+	\item Design and implement Python solutions using APIs with Flask, queries and database models in SQLAlchemy, and machine learning models in scikit-learn.
 
 	\item Adapted to a rapidly changing role as team requirements changed.
 
-	\item Perform large-scale refactors of the codebase, improving maintainability and test coverage.
+\end{itemize}
+
+\divider
+
+\cvevent{Undergraduate Engineer}{Saab Australia}{December 2019 -- February 2020}
+\begin{itemize}
+	\item Designed and developed a graphical concept demonstrator in Python to communicate application of a statistical estimator to a broader audience of Saab employees.
+
+	\item Collaborated with Modelling \& Analysis team and became actively involved in daily stand-ups and weekly team meetings, implementing the Agile framework.
+
+	% \item Created an inclusive and productive environment with other interns, taking advantage of our diverse backgrounds to support each other.
+
+	\item Delivered a successful and technical presentation to a diverse audience, explaining how project fitted into broader team goals.
+ 
+\end{itemize}
+
+
+\end{fullwidth}
+\newpage
+
+% Header
+%
+%\thispagestyle{}
+%\fancyhf{}
+%\fancyhead[C]{
+%\vspace{2.5mm}
+\begin{fullwidth}
+	\color{emphasis}%
+	{\fontsize{24pt}{24pt}\selectfont\bfseries{Liam Blake}}
+
+	% Break between name and objective
+	\divider
+
+
+\cvsection[]{Other Experience}
+\cvevent{Tutor and Marker}{The University of Adelaide}{March 2022 -- Present}
+\begin{itemize}
+	\item Provide drop-in tutoring for first year students across several mathematics subjects.
+
+	\item Mark assignments across first and second year mathematics subjects, providing useful feedback to help students improve. 
+
+\end{itemize}
+
+\divider
+
+\cvevent{Vice President}{Adelaide University Mathematics Society}{2020 -- 2021}
+\begin{itemize}
+	\item Lead and collaborate with a committee of 16 students working to organise club events of social, academic and industry focus.
+
+	\item Encourage, lead and take part in committee meetings where ideas are discussed and all opinions considered.
+
+	\item Volunteer enthusiastically to play key roles in the organisation and execution of events, applying practical problem-solving and people management skills.
+
+	\item Adapted to the unprecedented COVID-19 situation, leading discussions and implementations of remote events best suited to the society's members.
+ 
+	\item General committee member in 2019.
 \end{itemize}
 
 
@@ -163,55 +183,7 @@
 
 	\item Presented results to peers and academics nationwide at \textit{AMSIConnect} conference.
 \end{itemize}
-
-
-% Add page 2 sidebar
-\addnextpagesidebar[42pt]{sb_p2}
-
-
-\newpage
-
-% Header
-%
-%\thispagestyle{}
-%\fancyhf{}
-%\fancyhead[C]{
-%\vspace{2.5mm}
-\begin{fullwidth}
-	\color{emphasis}%
-	{\fontsize{24pt}{24pt}\selectfont\bfseries{Liam Blake}}
-
-	% Break between name and objective
-	\divider
-\end{fullwidth}%}
-
-\cvevent{Undergraduate Engineer}{Saab Australia}{December 2019 -- February 2020}
-\begin{itemize}
-	\item Designed and developed a graphical concept demonstrator in Python to communicate application of a statistical estimator to a broader audience of Saab employees.
-
-	\item Collaborated with Modelling \& Analysis team and became actively involved in daily stand-ups and weekly team meetings, implementing the Agile framework.
-	\item Created an inclusive and productive environment with other interns, taking advantage of our diverse backgrounds to support each other.
-
-	\item Delivered a successful and technical presentation to a diverse audience, explaining how project fitted into broader team goals.
-\end{itemize}
-
-
-\vspace{-3.55mm}
-\cvsection[]{Other Experience}
-\cvevent{Vice President}{Adelaide University Mathematics Society}{2020 -- Present}
-\begin{itemize}
-	\item Lead and collaborate with a committee of 16 students working to organise club events of social, academic and industry focus.
-
-	\item Encourage, lead and take part in committee meetings where ideas are discussed and all opinions considered.
-
-	\item Volunteer enthusiastically to play key roles in the organisation and execution of events, applying practical problem-solving and people management skills.
-
-	\item Adapted to the unprecedented COVID-19 situation, leading discussions and implementations of remote events best suited to the society's members.
-\end{itemize}
-
-
 \divider
-
 
 \cvevent{Mathematics Tutor}{Privately Empoyed}{2018 -- Present}
 \begin{itemize}
@@ -222,10 +194,15 @@
 	\item Balance own schedule to be as flexible as possible in arranging sessions best suited to the student and their family.
 \end{itemize}
 
-
-
-
 \divider
+
+\end{fullwidth}%}
+
+
+
+
+
+% \divider
 
 
 

@@ -1,0 +1,181 @@
+\PassOptionsToPackage{lowtilde}{url}
+
+
+\documentclass[11pt,a4paper,academicons]{altacv}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{fontspec}
+\usepackage{academicons}
+\usepackage{filecontents}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+\usepackage{xparse}
+
+\usepackage{style_resume}
+
+\geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm,headsep = 10mm}
+
+% Neat trick to access environment variables
+% From https://tex.stackexchange.com/a/62032
+\ExplSyntaxOn
+\NewDocumentCommand{\getenv}{om}
+{
+	\sys_get_shell:nnN { kpsewhich ~ --var-value ~ #2 } { } \l_tmpa_tl
+	\tl_trim_spaces:N \l_tmpa_tl
+	\IfNoValueTF { #1 }
+	{
+		\tl_use:N \l_tmpa_tl
+	}
+	{
+		\tl_set_eq:NN #1 \l_tmpa_tl
+	}
+}
+\ExplSyntaxOff
+
+\usepackage[12pt]{moresize}
+\usepackage[fulladjust]{marginnote}
+
+\begin{document}
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\cfoot{\centering\thepage}
+
+% Header section
+\begin{fullwidth}
+
+	% Name header
+	\begin{center}
+		\color{emphasis}%
+		{\fontsize{48pt}{48pt}\selectfont\bfseries{Liam Blake}}\\[0.25ex]
+
+		\small \email{\getenv{EMAIL}} \
+		\phone{\getenv{PHONE}} \\[0.1ex]
+		\linkedin{linkedin.com/in/liam-blake} \
+		\github{github.com/LiamBlake}
+	\end{center}
+	\divider
+
+\end{fullwidth}
+
+\cvsection{Education}
+\cvevent{Master of Philosophy (Applied Mathematics)}{The University of Adelaide}{January 2022 -- January 2024}
+\begin{itemize}
+	\item \textbf{Project Title:} Employing stochastic sensitivity to quantify trajectory uncertainty in Lagrangian data assimilation.
+ 
+	\item Develop new theory 
+
+	\item Provide mathematics tutoring for first year students, helping 
+\end{itemize}
+
+\cvevent{Bachelor of Mathematical Sciences (Advanced)}{The University of Adelaide}{February 2018 -- July 2021}
+\begin{itemize}
+	\item \textbf{Major:} Applied Mathematics \& Statistics
+
+	\item \textbf{GPA:} 7.0/7.0 \qquad \textbf{WAM:} 95.08
+
+	\item \textbf{Academic Awards:}
+\end{itemize}
+
+\divider
+
+
+\cvsection{Industry Experience}
+\cvevent{Data Science \& Software Intern}{Adelaide MRI}{March 2021 -- December 2021}
+\begin{itemize}
+	\item Develop web applications for medical report writing, collaborating with doctors and other team members to produce efficient solutions and features.
+
+	\item Design and implement solutions within the Python backend to a range of problems, including: designing RESTful APIs with Flask, queries and database models in SQLAlchemy, and developing, tuning and implementing machine learning models in scikit-learn.
+
+	\item Adapted to a rapidly changing role as team requirements changed.
+
+\end{itemize}
+
+
+\newpage
+
+% Header
+%
+%\thispagestyle{}
+%\fancyhf{}
+%\fancyhead[C]{
+%\vspace{2.5mm}
+\begin{fullwidth}
+	\color{emphasis}%
+	{\fontsize{24pt}{24pt}\selectfont\bfseries{Liam Blake}}
+
+	% Break between name and objective
+	\divider
+\end{fullwidth}%}
+
+\cvevent{Undergraduate Engineer}{Saab Australia}{December 2019 -- February 2020}
+\begin{itemize}
+	\item Designed and developed a graphical concept demonstrator in Python to communicate application of a statistical estimator to a broader audience of Saab employees.
+
+	\item Collaborated with Modelling \& Analysis team and became actively involved in daily stand-ups and weekly team meetings, implementing the Agile framework.
+
+	\item Created an inclusive and productive environment with other interns, taking advantage of our diverse backgrounds to support each other.
+
+	\item Delivered a successful and technical presentation to a diverse audience, explaining how project fitted into broader team goals.
+ 
+\end{itemize}
+
+
+\vspace{-3.55mm}
+\cvsection[]{Other Experience}
+\cvevent{Vice President}{Adelaide University Mathematics Society}{2020 -- 2021}
+\begin{itemize}
+	\item Lead and collaborate with a committee of 16 students working to organise club events of social, academic and industry focus.
+
+	\item Encourage, lead and take part in committee meetings where ideas are discussed and all opinions considered.
+
+	\item Volunteer enthusiastically to play key roles in the organisation and execution of events, applying practical problem-solving and people management skills.
+
+	\item Adapted to the unprecedented COVID-19 situation, leading discussions and implementations of remote events best suited to the society's members.
+ 
+	\item General committee member in 2019.
+\end{itemize}
+
+
+\divider
+
+\cvevent{Vacation Research Scholar}{Australian Mathematical Sciences Institute / The University of Adelaide}{December 2020 -- February 2021}
+\begin{itemize}
+	\item \textbf{Project Title:} Improving Clustering Techniques for Identifying Lagrangian Coherent Structures
+
+	\item Collaborated with my academic supervisor to create and achieve my own independent research goals.
+
+	\item Obtained and manipulated satellite ocean data and applied findings to simulated and real data in \textsc{Matlab}.
+
+	\item Synthesised multiple academic sources to combine theory and real data to produce and interpret results.
+
+	\item Presented results to peers and academics nationwide at \textit{AMSIConnect} conference.
+\end{itemize}
+\divider
+
+
+% \cvevent{Mathematics Tutor}{Privately Empoyed}{2018 -- Present}
+% \begin{itemize}
+% 	\item Encourage an enthusiasm for mathematics in students, while also developing their own ability and strive for academic success.
+
+% 	\item Develop trust by both respecting the student's ability and acknowledging their mistakes without judgement.
+
+% 	\item Balance own schedule to be as flexible as possible in arranging sessions best suited to the student and their family.
+% \end{itemize}
+
+
+
+
+% \divider
+
+
+
+%\cvevent{Assistant Instructor}{Next Generation Taekwondo -- Volunteering}{2015 -- 2019}
+%\begin{itemize}
+%\item Instructed a range of age groups, from toddlers to adults. 
+%\item Reliability and dedication led to being trusted to run large portions of the classes, and to be entirely responsible when necessary.
+%\item Regularly sought and incorporated feedback on both teaching and learning, continuously pushing to improve in both areas.
+%\item Collaborated with instructor and other assistants to provide creative and engaging activities for students to develop their skills and passion.
+%\end{itemize}
+
+\end{document}
